@@ -2,6 +2,8 @@ package com.sdut.cxy.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import com.sdut.cxy.dao.CustomersDao;
@@ -12,12 +14,17 @@ class customerDaotest {
 	private CustomersDao customerDao = new CustomerDaoJdbcImpl();
 	@Test
 	void testGetAll() {
-		fail("Not yet implemented");
+		List<Customers> customers = customerDao.getAll();
+		System.out.println(customers);
 	}
 
 	@Test
 	void testSave() {
-		fail("Not yet implemented");
+		Customers customers = new Customers();
+		customers.setAddress("beijing");
+		customers.setName("chenxiangyu");
+		customers.setPhone("17864309139");
+		customerDao.save(customers);
 	}
 
 	@Test
@@ -28,12 +35,13 @@ class customerDaotest {
 
 	@Test
 	void testDelete() {
-		fail("Not yet implemented");
+		customerDao.delete(1);;
 	}
 
 	@Test
 	void testGetCountWithName() {
-		fail("Not yet implemented");
+		long count = customerDao.getCountWithName("chenxiangyu");
+		System.out.println(count);
 	}
 
 }
